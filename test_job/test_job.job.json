@@ -1,0 +1,32 @@
+{
+    "config_ver": "2.0",
+    "dag_name": "test_job",
+    "owner": "g8y3e",
+    "tasks_retries": 0,
+    "retry_delay": 10,
+    "enabled": true,
+    "email_list": [],
+    "exec_parallel": false,
+    "jobs": [
+        {
+            "enabled": true,
+            "description": "loop_example",
+            "etl": {
+                "extract": {
+                    "data_source_type": "qubole_presto",
+                    "data_source": "qubole_prod",
+                    "cluster_label": "presto-prod"
+                },
+                "transform": {
+                    "sql": "SELECT * from test.test"
+                },
+                "load": {
+                    "data_target_type": "qubole_presto",
+                    "data_target": "qubole_prod",
+                    "schema": "test",
+                    "table": "yoav"
+                }
+            }
+        }
+    ]
+}
